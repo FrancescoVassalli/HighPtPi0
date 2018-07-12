@@ -6,7 +6,7 @@ Universe        = vanilla
 Notification    = Never
 
 # The executable we want to run.
-Executable   =  /direct/phenix+u/vassalli/photonJet/CondorFran.csh
+Executable   =  /direct/phenix+u/vassalli/HighPtPi0/CondorFran.csh
 
 # The argument to pass to the executable.
 Arguments       = $(Process)
@@ -24,23 +24,23 @@ Rank            = CPU_Speed
 
 # Jobs with higher numerical priority will run before jobs
 # with lower numerical priority (-20 to 20).
-Priority        = +10x
+Priority        = +10
 
 # Used to give jobs a directory with respect to file input
 # and output.
-Initialdir   = /direct/phenix+u/vassalli/photonJet
+Initialdir   = /direct/phenix+u/vassalli/HighPtPi0
 
 # Input file given to the job.
 Input           = /dev/null
 
 # The s stdout is sent to this file.
-Output       =/gpfs/mnt/gpfs04/sphenix/user/vassalli/condor_logs1/out.$(Process)
+Output       =/direct/phenix+u/vassalli/HighPtPi0/out.$(Process)
 
 # The s stderr is sent to this file.
-Error        =/gpfs/mnt/gpfs04/sphenix/user/vassalli/condor_logs1//err.$(Process))
+Error        =/direct/phenix+u/vassalli/HighPtPi0/err.$(Process))
 
 # The condor log file for this job, useful when debuggin
-Log          =/gpfs/mnt/gpfs04/sphenix/user/vassalli/condor_logs1/log.$(Process)
+Log          =/direct/phenix+u/vassalli/HighPtPi0/log.$(Process)
 
 # Email address to send notification to.
 Notify_user     = frva5829@colorado.edu
@@ -57,4 +57,4 @@ Notify_user     = frva5829@colorado.edu
 # job.  If a number is placed after the command (i.e. Queue 15)
 # then the job will be submitted N times.  Use the $(Process)
 # macro to make your input/output and log files unique.
-Queue 1000
+Queue 400
