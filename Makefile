@@ -1,17 +1,14 @@
-CC=g++
-CPPFLAGS=-O2 -ansi -W -fPIC
-ROOTINCLUDE=`root-config --libs --cflags`
-PYTHIA8INCLUDE=-I/home/user/pythia8226/include
-PYTHIA8LIB=-rpath,/home/user/pythia8226/lib
-HEPINCLUDE=-I/home/user/HEPBuild/include/
-HEPLIB=-rpath,/home/user/HEPBuild/lib/HepMC
-ARCHIVE=/home/user/pythia8226/lib/libpythia8.a
-driver: driver.o PionPythiaGen.o 
-	$(CC) driver.o PionPythiaGen.o -o mainPionGenerator
-PionPythiaGen.o: PionPythiaGen.cc PionPythiaGen.h
-	$(CC) $(CPPFLAGS) -c PionPythiaGen.o $(ARCHIVE) $(ROOTINCLUDE) $(PYTHIA8INCLUDE) $(HEPINCLUDE) -Wl,$(PYTHIA8LIB),$(HEPLIB) -ldl 
-driver.o: driver.cc
-	$(CC) $(CPPFLAGS) -c driver.cc
-clean:
-	rm *.o mainPionGenerator
+SHELL=/usr/bin/env bash
+CXX_COMMON=-O2 -pedantic -W -fPIC
+PREFIX_INCLUDE=/phenix/u/vassalli/pythia8230/include
+PREFIX_LIB=/phenix/u/vassalli/pythia8230/lib
+CXX_COMMON:=-I$(PREFIX_INCLUDE) $(CXX_COMMON)
+CXX_COMMON+= -L$(PREFIX_LIB) -Wl,-rpath,$(PREFIX_LIB) -lpythia8 -ldl
+CXX=g++
+HEPMC2_INCLUDE=/direct/phenix+u/vassalli/HEPBuild/include
+HEPMC2_LIB=/direct/phenix+u/vassalli/HEPBuild/lib
+all: driver
 
+driver: driver.cc $(PREFIX_LIB)/libpythia8.a PionPythiaGen.cc PionPythiaGen.h
+		$(CXX) $< -o driver -std=c++11 -I$(HEPMC2_INCLUDE) $(CXX_COMMON) -\
+L$(HEPMC2_LIB) -Wl,-rpath,$(HEPMC2_LIB) -lHepMC `root-config --libs --cflags`
