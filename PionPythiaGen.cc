@@ -14,8 +14,8 @@ void PionPythiaGen::pythiaInit(string pTHat){
   	m_pythiaengine->readString("HardQCD:qq2qq = on");
   	m_pythiaengine->readString("HardQCD:qqbar2gg = on");
   	m_pythiaengine->readString("HardQCD:qqbar2qqbarNew = on");
-  	m_pythiaengine->readString("PromptPhoton:qg2qgamma = on");
-  	m_pythiaengine->readString("PromptPhoton:qqbar2ggamma = on");
+  	//m_pythiaengine->readString("PromptPhoton:qg2qgamma = on");
+  	//m_pythiaengine->readString("PromptPhoton:qqbar2ggamma = on");
   	m_pythiaengine->readString("Random::setSeed = on");
   	m_pythiaengine->readString("Random::seed =0");
   	pTHat = "PhaseSpace:pTHatMin = "+pTHat+".";
@@ -50,7 +50,8 @@ void PionPythiaGen::init(string pThat){
 }
 
 void PionPythiaGen::run(long nEvents, float pTCut){
-	 for (int iEvent = 0; iEvent < nEvents; ++iEvent)
+  int iEvent=0;
+	 while (iEvent < nEvents)
   	{
   		if (!m_pythiaengine->next()){
       		cout<<"pythia.next() failed"<<"\n";
@@ -72,6 +73,7 @@ void PionPythiaGen::run(long nEvents, float pTCut){
     			/*fill the tree*/ 
   				//no tree for now
   				//m_ttree->Fill();
+          iEvent++;
      			break;
     		}
     	}
