@@ -4,5 +4,5 @@
 int main(){
 	PionPythiaGen generator("PionPythiaGenpT5");
 	generator.init("5");
-	generator.run();
+	generator.run(1,10);
 }
