@@ -34,13 +34,13 @@ Initialdir   = /direct/phenix+u/vassalli/HighPtPi0
 Input           = /dev/null
 
 # The s stdout is sent to this file.
-Output       =/direct/phenix+u/vassalli/HighPtPi0/out.$(Process)
+Output       =/direct/phenix+u/vassalli/HighPtPi0/condor_logs/out.$(Process)
 
 # The s stderr is sent to this file.
-Error        =/direct/phenix+u/vassalli/HighPtPi0/err.$(Process))
+Error        =/direct/phenix+u/vassalli/HighPtPi0/condor_logs/err.$(Process))
 
 # The condor log file for this job, useful when debuggin
-Log          =/direct/phenix+u/vassalli/HighPtPi0/log.$(Process)
+Log          =/direct/phenix+u/vassalli/HighPtPi0/condor_logs/log.$(Process)
 
 # Email address to send notification to.
 Notify_user     = frva5829@colorado.edu
@@ -57,4 +57,4 @@ Notify_user     = frva5829@colorado.edu
 # job.  If a number is placed after the command (i.e. Queue 15)
 # then the job will be submitted N times.  Use the $(Process)
 # macro to make your input/output and log files unique.
-Queue 400
+Queue 1

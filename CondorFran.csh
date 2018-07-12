@@ -37,6 +37,7 @@ cp  $DRIVER $SCRATCH_AREA/fran_pion/
 #-------------------                                                                                                                                  
 cd $SCRATCH_AREA/fran_pion
 ./driver pion1_${1} 5 10 50
+ls
 cp pion1_${1}* $OUT_FILE
 
 rm -r $SCRATCH_AREA/fran_pion
