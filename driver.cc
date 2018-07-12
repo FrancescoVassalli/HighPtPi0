@@ -2,7 +2,7 @@
 
 
 int main(){
-	PionPythiaGen generator("PionPythiaGenpT5","5");
-	generator.init();
+	PionPythiaGen generator("PionPythiaGenpT5");
+	generator.init("5");
 	generator.run();
 }

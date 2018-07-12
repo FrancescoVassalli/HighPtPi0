@@ -13,7 +13,7 @@ class Particle;
 class PionPythiaGen
 {
 public:
-	PionPythiaGen(const std::string name, std::string pTHat);
+	PionPythiaGen(const std::string name) : m_name(name){}
 	~PionPythiaGen(){
 		if (m_initialized)
 		{
