@@ -44,6 +44,7 @@ void PionPythiaGen::hepInit(){
 
 void PionPythiaGen::init(string pThat){
 	pythiaInit(pThat);
+  hepInit();
 	//treeInit(); no tree for now
 	m_initialized=true;
 }

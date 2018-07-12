@@ -9,7 +9,8 @@ HEPMC2_INCLUDE=/direct/phenix+u/vassalli/HEPBuild/include
 HEPMC2_LIB=/direct/phenix+u/vassalli/HEPBuild/lib
 
 driver: driver.cc PionPythiaGen.o
-		$(CXX) $< -o driver -std=c++11 
+		$(CXX) $< PionPythiaGen.o -o driver -std=c++11 -I$(HEPMC2_INCLUDE) $(CXX_COMMON) -\
+L$(HEPMC2_LIB) -Wl,-rpath,$(HEPMC2_LIB) -lHepMC `root-config --libs --cflags`
 
 PionPythiaGen.o: $(PREFIX_LIB)/libpythia8.a PionPythiaGen.cc PionPythiaGen.h
 		$(CXX) $< -c PionPythiaGen.cc -std=c++11 -I$(HEPMC2_INCLUDE) $(CXX_COMMON) -\

@@ -2,7 +2,7 @@
 
 #ifndef PionPythiaGen_h
 #define PionPythiaGen_h 
-#include <Pythia8/Pythia.h>
+#include "Pythia8/Pythia.h"
 #include <Pythia8Plugins/HepMC2.h> //added plugin for HepMC, think we will need some new library in pythia for this
 #include <TFile.h>
 #include <TTree.h>
