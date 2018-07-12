@@ -7,8 +7,13 @@ CXX_COMMON+= -L$(PREFIX_LIB) -Wl,-rpath,$(PREFIX_LIB) -lpythia8 -ldl
 CXX=g++
 HEPMC2_INCLUDE=/direct/phenix+u/vassalli/HEPBuild/include
 HEPMC2_LIB=/direct/phenix+u/vassalli/HEPBuild/lib
-all: driver
 
-driver: driver.cc $(PREFIX_LIB)/libpythia8.a PionPythiaGen.cc PionPythiaGen.h
-		$(CXX) $< -o driver -std=c++11 -I$(HEPMC2_INCLUDE) $(CXX_COMMON) -\
+driver: driver.cc PionPythiaGen.o
+		$(CXX) $< -o driver -std=c++11 
+
+PionPythiaGen.o: $(PREFIX_LIB)/libpythia8.a PionPythiaGen.cc PionPythiaGen.h
+		$(CXX) $< -c PionPythiaGen.cc -std=c++11 -I$(HEPMC2_INCLUDE) $(CXX_COMMON) -\
 L$(HEPMC2_LIB) -Wl,-rpath,$(HEPMC2_LIB) -lHepMC `root-config --libs --cflags`
+
+clean:
+	rm PionPythiaGen.o driver
