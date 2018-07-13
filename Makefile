@@ -1,5 +1,5 @@
 SHELL=/usr/bin/env bash
-CXX_COMMON=-O2 -pedantic -W -fPIC
+CXX_COMMON=-O2 -pedantic -W -fPIC -Wpointer-arith -Warray-bounds -Wchar-subscripts -Wmissing-braces -Wnonnull -Wparentheses -Wpointer-sign -Wreorder -Wreturn-type -Wsequence-point -Wsign-compare -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wunused-variable -Wempty-body -Wignored-qualifiers -Wmissing-field-initializers -Wuninitialized -Wunused-parameter -Wshadow
 PREFIX_INCLUDE=/phenix/u/vassalli/pythia8230/include
 PREFIX_LIB=/phenix/u/vassalli/pythia8230/lib
 CXX_COMMON:=-I$(PREFIX_INCLUDE) $(CXX_COMMON)
