@@ -61,7 +61,7 @@ void PionPythiaGen::run(long nEvents, float pTCut){
 
     	for (int i = 0; i < m_pythiaengine->event.size(); ++i)
     	{
-    		int finalcount=0;
+    		//int finalcount=0;
     		if (cut(m_pythiaengine->event[i],pTCut)) //cut
     		{
     			
@@ -73,6 +73,7 @@ void PionPythiaGen::run(long nEvents, float pTCut){
     			/*fill the tree*/ 
   				//no tree for now
   				//m_ttree->Fill();
+          std::cout<<"Good Event:"<<iEvent<<std::endl;
           iEvent++;
      			break;
     		}
