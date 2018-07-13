@@ -1,6 +1,11 @@
 #!/bin/csh                                                                                                                                                                                                  
-set FUN4All="$(FUN4ALL)"
-set AFTERBURNER="$(AFTERBURNER)"
+set FUN4All="FUN4ALL"
+set AFTERBURNER="AFTERBURNER"
+
+set FUNFRIENDS="/direct/phenix+u/vassalli/sphenix/FunFriends/*"
+
+set SCRATCH_AREA="$_CONDOR_SCRATCH_DIR"
+
 
 source /phenix/u/vassalli/.cshrc
 
@@ -15,6 +20,10 @@ set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion1_"$1".root"  #.root fr
 set infile = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".dat"              #.dat from pythia
 set outfileDST = "/sphenix/user/vassalli/HighpTPion/pion2_DST"$pt20".root"      #DST.root from Fun4All
 set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".root"  #.root from module (analyze this)
+
+mkdir $SCRATCH_AREA/fran_G4pion
+cp  $FUNFRIENDS $SCRATCH_AREA/fran_G4pion/
+
 
 #run pT cut 10 for first 400 in queue
 if ($1 <400) then 
