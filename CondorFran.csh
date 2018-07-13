@@ -36,7 +36,7 @@ cp  $DRIVER $SCRATCH_AREA/fran_pion/
 # Run Executable  
 #-------------------                                                                                                                                  
 cd $SCRATCH_AREA/fran_pion
-./driver pion1_${1} 5 10 50
+./driver pion2_${1} 5 220 50
 ls
 cp pion1_${1}* $OUT_FILE
 
