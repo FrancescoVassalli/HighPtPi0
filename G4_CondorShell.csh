@@ -16,10 +16,9 @@ set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion1_"$1".root"  #.root fr
 set SCRATCH_AREA="$_CONDOR_SCRATCH_DIR"
 set FUN="Fun4All_G4_sPHENIX.C"
 set AFTERBURNER="run_macro_isolation.C"
-set FUNFRIENDS="/direct/phenix+u/vassalli/sphenix/FunFriends/*"
-
+set FUNFRIENDS="/direct/phenix+u/vassalli/sphenix/FunFriends"
+set path = ($FUNFRIENDS $path)
 mkdir $SCRATCH_AREA/fran_G4pion
-cp  $FUNFRIENDS $SCRATCH_AREA/fran_G4pion/
 cp $FUN $SCRATCH_AREA/fran_G4pion/
 cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
 
