@@ -4,11 +4,10 @@ using namespace std;
 int Fun4All_G4_sPHENIX(
     const int nEvents = 100,
     const char *inputFile = "/sphenix/user/vassalli/XjPhi3/XjPhi3_pT5_98.dat",
-    const char *outputFile = "XjPhi3_pT5_98_dst.root",
-    //const char *outputFile = "G4sPHENIX.root",
+    const char *outputFile = "XjPhi3_pT5_98_dst.root")
 {
 
-    const char *embed_input_file = "/sphenix/data/data02/review_2017-08-02/sHijing/fm_0-4.list")
+    const char *embed_input_file = "/sphenix/data/data02/review_2017-08-02/sHijing/fm_0-4.list";
   //===============
   // Input options
   //===============
