@@ -34,13 +34,13 @@ Initialdir   = /direct/phenix+u/vassalli/HighPtPi0
 Input           = /dev/null
 
 # The s stdout is sent to this file.
-Output       =/direct/phenix+u/vassalli/HighPtPi0/condor_logs/out.$(Process)
+Output       =/direct/phenix+u/vassalli/HighPtPi0/condor_logs2/out.$(Process)
 
 # The s stderr is sent to this file.
-Error        =/direct/phenix+u/vassalli/HighPtPi0/condor_logs/err.$(Process))
+Error        =/direct/phenix+u/vassalli/HighPtPi0/condor_logs2/err.$(Process))
 
 # The condor log file for this job, useful when debuggin
-Log          =/direct/phenix+u/vassalli/HighPtPi0/condor_logs/log.$(Process)
+Log          =/direct/phenix+u/vassalli/HighPtPi0/condor_logs2/log.$(Process)
 
 # Email address to send notification to.
 Notify_user     = frva5829@colorado.edu

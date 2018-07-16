@@ -29,17 +29,17 @@ cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
 #run pT cut 10 for first 400 in queue
 if ($1 <400) then 
     echo ----RUNNING $(FUN4ALL)----
-    echo root -b -q $(FUN4ALL)\(0,\"$infile\",\"$outfileDST\"\)
-    root -b -q $(FUN4ALL)\(0,\"$infile\",\"$outfileDST\"\)
+    echo root -b -q $(FUN4ALL)\(50,\"$infile\",\"$outfileDST\"\)
+    root -b -q $(FUN4ALL)\(50,\"$infile\",\"$outfileDST\"\)
     
-    #echo ---- RUNNING  Analysis Module ----
+    echo ---- RUNNING  Analysis Module ----
     echo root -b -q $(AFTERBURNER)\(\"$outfileDST\",\"$outfileRoot\"\)
     root -b -q $(AFTERBURNER)\(\"$outfileDST\",\"$outfileRoot\"\)
     
 #run pT cut 20 for next 400 in queue
 else if (400<=$1<800) then
     echo ----RUNNING $(FUN4ALL)----
-    root -b -q $(FUN4ALL)\(0,\"$infile2\",\"$outfileDST2\"\)
+    root -b -q $(FUN4ALL)\(50,\"$infile2\",\"$outfileDST2\"\)
 
     echo ---- RUNNING  Analysis Module ----
     root -b -q $(AFTERBURNER)\(\"$outfileDST2\",\"$outfileRoot2\"\)
