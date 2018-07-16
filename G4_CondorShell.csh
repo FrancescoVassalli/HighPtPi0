@@ -37,11 +37,11 @@ if ($1 <400) then
     root -b -q $(AFTERBURNER)\(\"$outfileDST\",\"$outfileRoot\"\)
     
 #run pT cut 20 for next 400 in queue
-else if (400<=$1<800) then
-    echo ----RUNNING $(FUN4ALL)----
-    root -b -q $(FUN4ALL)\(50,\"$infile2\",\"$outfileDST2\"\)
-
-    echo ---- RUNNING  Analysis Module ----
-    root -b -q $(AFTERBURNER)\(\"$outfileDST2\",\"$outfileRoot2\"\)
+#else if (400<=$1<800) then
+#    echo ----RUNNING $(FUN4ALL)----
+#    root -b -q $(FUN4ALL)\(50,\"$infile2\",\"$outfileDST2\"\)
+#
+#    echo ---- RUNNING  Analysis Module ----
+#    root -b -q $(AFTERBURNER)\(\"$outfileDST2\",\"$outfileRoot2\"\)
     
 endif
