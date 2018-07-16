@@ -1,6 +1,6 @@
 #!/bin/csh                                                                                                                                                                                                  
-set FUN4All="FUN4ALL"
-set AFTERBURNER="AFTERBURNER"
+set FUN4All="FUN4ALL_G4_sPHENIX.C"
+set AFTERBURNER="run_macro_isolation.C"
 
 set FUNFRIENDS="/direct/phenix+u/vassalli/sphenix/FunFriends/*"
 
@@ -23,7 +23,8 @@ set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".root"  #.root
 
 mkdir $SCRATCH_AREA/fran_G4pion
 cp  $FUNFRIENDS $SCRATCH_AREA/fran_G4pion/
-
+cp $FUN4ALL $SCRATCH_AREA/fran_G4pion/
+cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
 
 #run pT cut 10 for first 400 in queue
 if ($1 <400) then 
