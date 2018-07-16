@@ -9,18 +9,18 @@ set outfileDST = "/sphenix/user/vassalli/HighpTPion/pion1_DST"$1".root"      #DS
 set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion1_"$1".root"  #.root from module (analyze this)
 
 #set all files for pT cut 20                                                                                                                                                                               
-set infile = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".dat"              #.dat from pythia
-set outfileDST = "/sphenix/user/vassalli/HighpTPion/pion2_DST"$pt20".root"      #DST.root from Fun4All
-set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".root"  #.root from module (analyze this)
+#set infile = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".dat"              #.dat from pythia
+#set outfileDST = "/sphenix/user/vassalli/HighpTPion/pion2_DST"$pt20".root"      #DST.root from Fun4All
+#set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion2_"$pt20".root"  #.root from module (analyze this)
 
 set SCRATCH_AREA="$_CONDOR_SCRATCH_DIR"
-set FUN="FUN4ALL_G4_sPHENIX.C"
+set FUN="Fun4All_G4_sPHENIX.C"
 set AFTERBURNER="run_macro_isolation.C"
 set FUNFRIENDS="/direct/phenix+u/vassalli/sphenix/FunFriends/*"
 
 mkdir $SCRATCH_AREA/fran_G4pion
 cp  $FUNFRIENDS $SCRATCH_AREA/fran_G4pion/
-cp $FUN4ALL $SCRATCH_AREA/fran_G4pion/
+cp $FUN $SCRATCH_AREA/fran_G4pion/
 cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
 
 #run pT cut 10 for first 400 in queue
