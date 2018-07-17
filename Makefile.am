@@ -15,12 +15,12 @@ lib_LTLIBRARIES = \
   libHighPionAnalysis.la
 
 include_HEADERS = \
-  HighPionAnalysis.h \
-  HighPionAnalysisLinkDef.h 
+  PionAfterModule.h \
+  PionAfterModuleLinkDef.h 
 
 libHighPionAnalysis_la_SOURCES = \
-  HighPionAnalysis.C \
-  HighPionAnalysis_Dict.C 
+  PionAfterModule.C \
+  PionAfterModule_Dict.C 
 
 libHighPionAnalysis_la_LIBADD = \
   -lg4dst \
