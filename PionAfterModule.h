@@ -1,5 +1,5 @@
-#ifndef __TRUTHJETTRIGGER_H__
-#define __TRUTHJETTRIGGER_H__
+#ifndef __PionAfterModule_H__
+#define __PionAfterModule_H__
 
 // --- need to check all these includes...
 #include <fun4all/SubsysReco.h>
@@ -10,12 +10,12 @@
 
 class PHCompositeNode;
 
-class PhotonIsolationMaker: public SubsysReco
+class PionAfterModule: public SubsysReco
 {
 
  public:
 
-  PhotonIsolationMaker(const std::string &name="PhotonIsolationMaker.root");
+  PionAfterModule(const std::string &name="PionAfterModule.root");
 
   int Init(PHCompositeNode*);
   int process_event(PHCompositeNode*);
