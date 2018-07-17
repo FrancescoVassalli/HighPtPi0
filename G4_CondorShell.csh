@@ -23,21 +23,21 @@ cp $FUN $SCRATCH_AREA/fran_G4pion/
 cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
 
 #run pT cut 10 for first 400 in queue
-if ($1 <400) then 
-    echo ----RUNNING $FUN----
-    echo root -b -q $FUN\(50,\"$infile\",\"$outfileDST\"\)
-    root -b -q $FUN\(50,\"$infile\",\"$outfileDST\"\)
-    
-    echo ---- RUNNING  Analysis Module ----
-    echo root -b -q $AFTERBURNER\(\"$outfileDST\",\"$outfileRoot\"\)
-    root -b -q $AFTERBURNER\(\"$outfileDST\",\"$outfileRoot\"\)
+#if ($1 <400) then 
+#    echo ----RUNNING $FUN----
+#    echo root -b -q $FUN\(50,\"$infile\",\"$outfileDST\"\)
+#    root -b -q $FUN\(50,\"$infile\",\"$outfileDST\"\)
+#    
+#    echo ---- RUNNING  Analysis Module ----
+#    echo root -b -q $AFTERBURNER\(\"$outfileDST\",\"$outfileRoot\"\)
+#    root -b -q $AFTERBURNER\(\"$outfileDST\",\"$outfileRoot\"\)
     
 #run pT cut 20 for next 400 in queue
-#else if (400<=$1<800) then
-#    echo ----RUNNING $(FUN)----
-#    root -b -q $(FUN)\(50,\"$infile2\",\"$outfileDST2\"\)
-#
-#    echo ---- RUNNING  Analysis Module ----
-#    root -b -q $(AFTERBURNER)\(\"$outfileDST2\",\"$outfileRoot2\"\)
+else if (400<=$1<800) then
+    echo ----RUNNING $(FUN)----
+    root -b -q $(FUN)\(50,\"$infile2\",\"$outfileDST2\"\)
+
+    echo ---- RUNNING  Analysis Module ----
+    root -b -q $(AFTERBURNER)\(\"$outfileDST2\",\"$outfileRoot2\"\)
     
 endif

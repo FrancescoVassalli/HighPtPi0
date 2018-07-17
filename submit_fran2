@@ -6,7 +6,7 @@ Universe        = vanilla
 Notification    = Never
 
 # The executable we want to run.
-Executable   =  /direct/phenix+u/vassalli/HighPtPi0/CondorFran.csh
+Executable   =  /direct/phenix+u/vassalli/HighPtPi0/CondorFran2.csh
 
 # The argument to pass to the executable.
 Arguments       = $(Process)

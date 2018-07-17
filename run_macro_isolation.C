@@ -31,10 +31,7 @@ int run_macro_isolation(
   TruthJetInput *tji = new TruthJetInput(Jet::PARTICLE);
   //  tji->add_embedding_flag( 1 );
   truthjetreco->add_input(tji);
-  truthjetreco->add_algo(new FastJetAlgo(Jet::ANTIKT,0.2),"AntiKt_Truth_r02");
-  truthjetreco->add_algo(new FastJetAlgo(Jet::ANTIKT,0.3),"AntiKt_Truth_r03");
   truthjetreco->add_algo(new FastJetAlgo(Jet::ANTIKT,0.4),"AntiKt_Truth_r04");
-  truthjetreco->add_algo(new FastJetAlgo(Jet::ANTIKT,0.5),"AntiKt_Truth_r05");
   truthjetreco->set_algo_node("ANTIKT");
   truthjetreco->set_input_node("TRUTH");
   truthjetreco->Verbosity(10);
@@ -69,10 +66,7 @@ int run_macro_isolation(
   towerjetreco->add_input(new TowerJetInput(Jet::CEMC_TOWER_SUB1));
   towerjetreco->add_input(new TowerJetInput(Jet::HCALIN_TOWER_SUB1));
   towerjetreco->add_input(new TowerJetInput(Jet::HCALOUT_TOWER_SUB1));
-  towerjetreco->add_algo(new FastJetAlgoSub(Jet::ANTIKT,0.2,verbosity),"AntiKt_Tower_r02_Sub1");
-  towerjetreco->add_algo(new FastJetAlgoSub(Jet::ANTIKT,0.3,verbosity),"AntiKt_Tower_r03_Sub1");
   towerjetreco->add_algo(new FastJetAlgoSub(Jet::ANTIKT,0.4,verbosity),"AntiKt_Tower_r04_Sub1");
-  towerjetreco->add_algo(new FastJetAlgoSub(Jet::ANTIKT,0.5,verbosity),"AntiKt_Tower_r05_Sub1");
   towerjetreco->set_algo_node("ANTIKT");
   towerjetreco->set_input_node("TOWER");
   towerjetreco->Verbosity( 10 );
