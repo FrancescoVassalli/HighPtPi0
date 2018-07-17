@@ -73,7 +73,7 @@ int run_macro_isolation(
   se->registerSubsystem(towerjetreco);
 
 
-  PhotonIsolationMaker *tt = new PhotonIsolationMaker( outfile );
+  PionAfterModule *tt = new PionAfterModule( outfile );
   se->registerSubsystem( tt );
 
   se->run();
