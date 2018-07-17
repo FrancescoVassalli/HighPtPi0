@@ -14,7 +14,7 @@ int run_macro_isolation(
   gSystem->Load("libcalotrigger.so");
   gSystem->Load("libjetbackground.so");
 
-  gSystem->Load("libTreeMaker.so");
+  gSystem->Load("libHighPionAnalysis.so");
 
   int verbosity = 0;
 

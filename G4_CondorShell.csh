@@ -21,7 +21,7 @@ set path = ($FUNFRIENDS $path)
 mkdir $SCRATCH_AREA/fran_G4pion
 cp $FUN $SCRATCH_AREA/fran_G4pion/
 cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
-
+cd $SCRATCH_AREA/fran_G4pion/
 #run pT cut 10 for first 400 in queue
 if ($1 <400) then 
     echo ----RUNNING $FUN----

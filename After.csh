@@ -15,7 +15,7 @@ set SCRATCH_AREA="$_CONDOR_SCRATCH_DIR"
 set AFTERBURNER="run_macro_isolation.C"
 mkdir $SCRATCH_AREA/fran_G4pion
 cp $AFTERBURNER $SCRATCH_AREA/fran_G4pion/
-
+cd $SCRATCH_AREA/fran_G4pion/
 #run pT cut 10 for first NJOBS in queue
 echo ---- RUNNING  Analysis Module ----
 if ($1 <$NJOBS) then 
