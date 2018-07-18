@@ -1,6 +1,6 @@
 #!/bin/csh                                                                                                                                                                                                  
 source /phenix/u/vassalli/.cshrc
-#set NJOBS=400
+set NJOBS=400
 #@ pt20 = ($1 - $NJOBS)
 
 #set all files for pT cut 10
