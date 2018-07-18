@@ -41,7 +41,7 @@ int PionAfterModule::Init(PHCompositeNode *topNode)
   _f = new TFile( _foutname.c_str(), "RECREATE");
 
   _tree = new TTree("ttree","a succulent orange tree");
-
+  _tree->SetAutoSave(300);
   _tree->Branch("particle_n", &_b_particle_n,"particle_n/I");
   _tree->Branch("particle_pt", _b_particle_pt,"particle_pt[particle_n]/F");
   _tree->Branch("particle_eta", _b_particle_eta,"particle_eta[particle_n]/F");

@@ -38,7 +38,7 @@ int run_macro_isolation(
   se->registerSubsystem(truthjetreco);
 
   
-  RetowerCEMC *rcemc = new RetowerCEMC();
+/*  RetowerCEMC *rcemc = new RetowerCEMC();
   rcemc->Verbosity( 0 );
   se->registerSubsystem( rcemc );
 
@@ -60,7 +60,7 @@ int run_macro_isolation(
   
   SubtractTowers *st = new SubtractTowers();
   st->Verbosity( 0 );
-  se->registerSubsystem( st );
+  se->registerSubsystem( st );*/
 
   JetReco *towerjetreco = new JetReco();
   towerjetreco->add_input(new TowerJetInput(Jet::CEMC_TOWER_SUB1));
