@@ -1,0 +1,6 @@
+condor_log*
+missing
+build*
+*log*
+*.o
+driver
