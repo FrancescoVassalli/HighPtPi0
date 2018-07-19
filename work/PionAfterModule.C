@@ -28,6 +28,9 @@
 
 #include <jetbackground/TowerBackground.h>
 
+#include <g4vertex/GlobalVertex.h>
+#include <g4vertex/GlobalVertexMap.h>
+
 PionAfterModule::PionAfterModule(const std::string &name) : SubsysReco("TRIGGERTEST")
 {
 
@@ -82,17 +85,13 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
   std::cout << "PionAfterModule::process_event: " << towersOH3->size() << " TOWER_CALIB_HCALOUT towers" << std::endl;
   //std::cout << "PionAfterModule::process_event: " << towersOH4->size() << " TOWER_CALIB_HCALOUT_SUB1 towers" << std::endl;
 
-  RawTowerGeomContainer *geomEM = findNode::getClass<RawTowerGeomContainer>(topNode, "TOWERGEOM_CEMC");
-  RawTowerGeomContainer *geomIH = findNode::getClass<RawTowerGeomContainer>(topNode, "TOWERGEOM_HCALIN");
-  RawTowerGeomContainer *geomOH = findNode::getClass<RawTowerGeomContainer>(topNode, "TOWERGEOM_HCALOUT");
-
   _b_particle_n = 0;
   
   PHG4TruthInfoContainer* truthinfo = findNode::getClass<PHG4TruthInfoContainer>(topNode,"G4TruthInfo");
   PHG4TruthInfoContainer::Range range = truthinfo->GetPrimaryParticleRange();
 
   GlobalVertexMap* vertexmap = findNode::getClass<GlobalVertexMap>(topNode, "GlobalVertexMap");
-  float vx=vy=vz=0;
+  float vx=0,vy=0,vz=0;
   if (vertexmap&&!vertexmap->empty())
   {
      GlobalVertex* vertex = (vertexmap->begin()->second);
