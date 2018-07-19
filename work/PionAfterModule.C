@@ -50,8 +50,6 @@ int PionAfterModule::Init(PHCompositeNode *topNode)
   _tree->Branch("particle_eta", _b_particle_eta,"particle_eta[particle_n]/F");
   _tree->Branch("particle_phi", _b_particle_phi,"particle_phi[particle_n]/F");
   _tree->Branch("particle_pid", _b_particle_pid,"particle_pid[particle_n]/I");
-  _tree->Branch("particle_calo_iso_0", _b_particle_calo_iso_0,"particle_calo_iso_0[particle_n]/F");
-  _tree->Branch("particle_calo_iso_2", _b_particle_calo_iso_2,"particle_calo_iso_2[particle_n]/F");
 
   _tree->Branch("cluster_n", &_b_cluster_n,"cluster_n/I");
   _tree->Branch("cluster_pt", _b_cluster_pt,"cluster_pt[cluster_n]/F");
