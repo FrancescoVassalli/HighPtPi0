@@ -23,7 +23,7 @@ class PionAfterModule: public SubsysReco
 
  private:
 
-  float deltaR( float eta1, float eta2, float phi1, float phi2 ) {
+  inline float deltaR( float eta1, float eta2, float phi1, float phi2 ) {
 
     float deta = eta1 - eta2;
     float dphi = phi1 - phi2;
