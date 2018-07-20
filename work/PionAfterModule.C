@@ -50,6 +50,7 @@ int PionAfterModule::Init(PHCompositeNode *topNode)
   _tree->Branch("particle_eta", _b_particle_eta,"particle_eta[particle_n]/F");
   _tree->Branch("particle_phi", _b_particle_phi,"particle_phi[particle_n]/F");
   _tree->Branch("particle_pid", _b_particle_pid,"particle_pid[particle_n]/I");
+  _tree->Branch("particle_parentID", _b_particle_parentID,"_b_particle_parentID[particle_n]/I");
 
   _tree->Branch("cluster_n", &_b_cluster_n,"cluster_n/I");
   _tree->Branch("cluster_pt", _b_cluster_pt,"cluster_pt[cluster_n]/F");
@@ -106,14 +107,13 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
     if (fabs(truth_eta) > 1.1) continue;
     float truth_phi = t.Phi();
     int truth_pid = g4particle->get_pid();
+    int truth_status
 
     _b_particle_pt[ _b_particle_n ] = truth_pt;
     _b_particle_eta[ _b_particle_n ] = truth_eta;
     _b_particle_phi[ _b_particle_n ] = truth_phi;
     _b_particle_pid[ _b_particle_n ] = truth_pid;
-    _b_particle_calo_iso_0[ _b_particle_n ] = -99;
-    _b_particle_calo_iso_1[ _b_particle_n ] = -99;
-    _b_particle_calo_iso_2[ _b_particle_n ] = -99;
+    _b_particle_parentID[_b_particle_n] = g4particle->get_parent_id();
     _b_particle_n++;
   }
 
