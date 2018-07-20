@@ -72,7 +72,7 @@ int run_macro_isolation(
   towerjetreco->Verbosity( 10 );
   se->registerSubsystem(towerjetreco);
 
-
+  se->registerSubsystem( new ClusterIso("ClusterIsolator",1,3,0,1));
   PionAfterModule *tt = new PionAfterModule( outfile );
   se->registerSubsystem( tt );
 

@@ -107,7 +107,6 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
     if (fabs(truth_eta) > 1.1) continue;
     float truth_phi = t.Phi();
     int truth_pid = g4particle->get_pid();
-    int truth_status
 
     _b_particle_pt[ _b_particle_n ] = truth_pt;
     _b_particle_eta[ _b_particle_n ] = truth_eta;

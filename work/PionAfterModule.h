@@ -51,7 +51,7 @@ class PionAfterModule: public SubsysReco
   float _b_particle_eta[1000];
   float _b_particle_phi[1000];
   int _b_particle_pid[1000];
-  _b_particle_parentID[1000];
+  int _b_particle_parentID[1000];
 
 };
 
