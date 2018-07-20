@@ -4,7 +4,7 @@ set NJOBS=400
 #@ pt20 = ($1 - $NJOBS)
 
 #set all files for pT cut 10
-set outfileDST = "/sphenix/user/vassalli/HighpTPion/pion1_DST"$1".root"      #DST.root from Fun4All
+set outfileDST = "/sphenix/user/vassalli/HighpTPion/DST/pion1_DST"$1".root"      #DST.root from Fun4All
 set outfileRoot = "/sphenix/user/vassalli/HighpTPion/pion1_"$1".root"  #.root from module (analyze this)
 
 #set all files for pT cut 20                                                                                                                                                                               
