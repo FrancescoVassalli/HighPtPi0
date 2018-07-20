@@ -133,7 +133,7 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
       _b_cluster_eta[ _b_cluster_n ] =  cluster_eta;
       _b_cluster_phi[ _b_cluster_n ] =  cluster->get_phi();
       _b_cluster_pt[ _b_cluster_n ] = pt;
-      _b_cluster_iso[ _b_cluster_n ] =  cluster->get_et_iso();
+      _b_cluster_iso[ _b_cluster_n ] =  cluster->get_et_iso(3,0,1);
       std::cout << " cluster (CEMC) # " << _b_cluster_n << " pt/eta/phi = " << pt << " / " << cluster_eta << " / " << cluster->get_phi() << std::endl;
       _b_cluster_n++;
     }
