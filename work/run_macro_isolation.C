@@ -13,7 +13,7 @@ int run_macro_isolation(
   gSystem->Load("libg4eval.so");
   gSystem->Load("libcalotrigger.so");
   gSystem->Load("libjetbackground.so");
-
+  gSystem->Load("libclusteriso.so");
   gSystem->Load("libHighPionAnalysis.so");
 
   int verbosity = 0;
@@ -34,7 +34,7 @@ int run_macro_isolation(
   truthjetreco->add_algo(new FastJetAlgo(Jet::ANTIKT,0.4),"AntiKt_Truth_r04");
   truthjetreco->set_algo_node("ANTIKT");
   truthjetreco->set_input_node("TRUTH");
-  truthjetreco->Verbosity(10);
+  truthjetreco->Verbosity(0);
   se->registerSubsystem(truthjetreco);
 
   
@@ -69,10 +69,12 @@ int run_macro_isolation(
   towerjetreco->add_algo(new FastJetAlgoSub(Jet::ANTIKT,0.4,verbosity),"AntiKt_Tower_r04_Sub1");
   towerjetreco->set_algo_node("ANTIKT");
   towerjetreco->set_input_node("TOWER");
-  towerjetreco->Verbosity( 10 );
+  towerjetreco->Verbosity( 0 );
   se->registerSubsystem(towerjetreco);
 
-  se->registerSubsystem( new ClusterIso("ClusterIsolator",1,3,0,1));
+  ClusterIso * ci = new ClusterIso("ClusterIsolator",1,3,0,1);
+  ci->Verbosity( 0 );
+  se->registerSubsystem( ci);
   PionAfterModule *tt = new PionAfterModule( outfile );
   se->registerSubsystem( tt );
 
