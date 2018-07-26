@@ -6,18 +6,33 @@ using namespace std;
 #include "TChain.h"
 #include "TLegend.h"
 
-void plotgammapT(TH1F* plot){
+void plotgamma(TH1F* plot,string x){
   TCanvas* tc = new TCanvas();
-  plot->Scale(1/plot->Integral());
+  gPad->SetLogy();
+  //plot->Scale(1/plot->Integral());
+  axisTitles(plot,x.c_str(),"");
   plot->Draw();
+}
+
+void plotgamma(TH2F* plot,string x, string y){
+  TCanvas* tc = new TCanvas();
+  tc->SetRightMargin(.1);
+  gPad->SetLogz();
+  plot->Scale(1/plot->Integral());
+  axisTitles(plot,x.c_str(),y.c_str());
+  plot->Draw("colz");
 }
 
 void analyze(TChain* interest){
 
   TH1F *photonpT = new TH1F("photonpT","",20,1,30); 
+  TH1F *photonIso = new TH1F("photonIso","",20,-1,30); 
+  TH2F *photon2 = new TH2F("name","",20,5,30,20,-5,30); 
   photonpT->Sumw2();
+  photonIso->Sumw2();
 
   int truthID[300];
+  int parentID[300];
   float truthpT[300];
   float trutheta[300];
   float truthphi[300];
@@ -28,6 +43,7 @@ void analyze(TChain* interest){
   interest->SetBranchAddress("particle_pt",&truthpT);
   interest->SetBranchAddress("particle_eta",&trutheta);
   interest->SetBranchAddress("particle_phi",&truthphi);
+  interest->SetBranchAddress("particle_parentID",&parentID);
   
   int cluster_n;
   float cluster_pt[300];
@@ -47,14 +63,18 @@ void analyze(TChain* interest){
     interest->GetEvent(i);
     for(int j = 0; j < truthend; j++)
     {
-      if(truthpT[j]>1 and truthID[j]==22 and fabs(trutheta[j]) < 1.1) //pion in the trutheta range 
+      if(truthpT[j]>5 and truthID[j]==22 and fabs(trutheta[j]) < 1.1) //pion in the trutheta range 
       {
-        //cout<<truthID[j]<<'\n';
         photonpT->Fill(truthpT[j]);
+        photonIso->Fill(iso_eT[j]);
+        photon2->Fill(truthpT[j],iso_eT[j]);
+       // cout<<parentID[j]<<'\n';
       }
     }
   }
-  plotgammapT(photonpT);
+  plotgamma(photonpT,"pT #gamma");
+  plotgamma(photonIso,"#gamma E_T^Iso");
+  plotgamma(photon2,"pT #gamma","#gamma E_T^Iso");
 }
 
 void handleG4File(string name, string extension, int filecount){
