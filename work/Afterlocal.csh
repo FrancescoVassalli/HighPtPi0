@@ -1,7 +1,7 @@
 #!/bin/csh                                                                                                                                                                                                  
 source /phenix/u/vassalli/.cshrc
 set NJOBS=1
-@ pt20 = ($1 - $NJOBS)
+#@ pt20 = ($1 - $NJOBS)
 
 #set all files for pT cut 10
 set outfileDST = "/sphenix/user/vassalli/HighpTPion/DST/pion1_DST"$1".root"      #DST.root from Fun4All
