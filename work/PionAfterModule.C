@@ -113,7 +113,13 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
     _b_particle_phi[ _b_particle_n ] = truth_phi;
     _b_particle_pid[ _b_particle_n ] = truth_pid;
     PHG4Particle* parent = truthinfo->GetParticle(g4particle->get_parent_id());
-    _b_particle_parentID[_b_particle_n] = parent->get_pid();
+    if(parent==nullptr){
+       _b_particle_parentID[_b_particle_n] =0;
+       std::cout<<"Parent is NULL"<<std::endl;
+    }
+    else{
+      _b_particle_parentID[_b_particle_n] = parent->get_pid();
+    }
     _b_particle_n++;
   }
 
@@ -147,7 +153,8 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
 
 int PionAfterModule::End(PHCompositeNode *topNode)
 {
-  std::cout<"Pion Analysis Done \n";
+  std::cout<<"Pion Analysis Done \n";
+  _tree->Write();
   _f->Write();
   _f->Close();
 
