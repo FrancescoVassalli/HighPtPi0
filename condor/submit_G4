@@ -6,7 +6,7 @@ Universe        = vanilla
 Notification    = Never
 
 # The executable we want to run.
-Executable   =  /direct/phenix+u/vassalli/HighPtPi0/work/G4_CondorShell.csh
+Executable   =  /direct/phenix+u/vassalli/HighPtPi0/condor/G4_CondorShell.csh
 
 # The argument to pass to the executable.
 Arguments       = $(Process)
@@ -28,19 +28,19 @@ Priority        = +6
 
 # Used to give jobs a directory with respect to file input
 # and output.
-Initialdir   = /direct/phenix+u/vassalli/HighPtPi0/work
+Initialdir   = /direct/phenix+u/vassalli/HighPtPi0
 
 # Input file given to the job.
 Input           = /dev/null
 
 # The s stdout is sent to this file.
-Output       =/direct/phenix+u/vassalli/HighPtPi0/CondorG4log1/out.$(Process)
+Output       =/direct/phenix+u/vassalli/HighPtPi0/condor/sim_log/out.$(Process)
 
 # The s stderr is sent to this file.
-Error        =/direct/phenix+u/vassalli/HighPtPi0/CondorG4log1/err.$(Process))
+Error        =/direct/phenix+u/vassalli/HighPtPi0/condor/sim_log/err.$(Process))
 
-# The condor log file for this job, useful when dedin
-Log          =/direct/phenix+u/vassalli/HighPtPi0/CondorG4log1/log.$(Process)
+# The condor log file for this job, useful when decondor/sim_log
+Log          =/direct/phenix+u/vassalli/HighPtPi0/condor/sim_log/log.$(Process)
 
 # Email address to send notification to.
 Notify_user     = frva5829@colorado.edu
