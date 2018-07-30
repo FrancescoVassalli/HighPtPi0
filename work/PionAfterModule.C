@@ -5,6 +5,12 @@
 
 #include <phool/PHCompositeNode.h>
 
+#include <phhepmc/PHHepMCGenEvent.h>
+#include <phhepmc/PHHepMCGenEventMap.h>
+
+#include <HepMC/GenParticle.h>
+
+
 #include "TLorentzVector.h"
 #include <iostream>
 
@@ -64,31 +70,12 @@ int PionAfterModule::Init(PHCompositeNode *topNode)
 
 int PionAfterModule::process_event(PHCompositeNode *topNode)
 {
-
-  std::cout << "DVP : at process_event, tree size is: " << _tree->GetEntries() << std::endl;
-
-  RawTowerContainer *towersEM3old = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_CEMC");
-  //RawTowerContainer *towersEM3 = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_CEMC_RETOWER");
-  //RawTowerContainer *towersEM4 = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_CEMC_RETOWER_SUB1");
-  std::cout << "PionAfterModule::process_event: " << towersEM3old->size() << " TOWER_CALIB_CEMC towers" << std::endl;
-  //std::cout << "PionAfterModule::process_event: " << towersEM3->size() << " TOWER_CALIB_CEMC_RETOWER towers" << std::endl;
-  //std::cout << "PionAfterModule::process_event: " << towersEM4->size() << " TOWER_CALIB_CEMC_RETOWER_SUB1 towers" << std::endl;
-
-  RawTowerContainer *towersIH3 = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_HCALIN");
-  //RawTowerContainer *towersIH4 = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_HCALIN_SUB1");
-  std::cout << "PionAfterModule::process_event: " << towersIH3->size() << " TOWER_CALIB_HCALIN towers" << std::endl;
-  //std::cout << "PionAfterModule::process_event: " << towersIH4->size() << " TOWER_CALIB_HCALIN_SUB1 towers" << std::endl;
-
-  RawTowerContainer *towersOH3 = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_HCALOUT");
-  //RawTowerContainer *towersOH4 = findNode::getClass<RawTowerContainer>(topNode, "TOWER_CALIB_HCALOUT_SUB1");
-  std::cout << "PionAfterModule::process_event: " << towersOH3->size() << " TOWER_CALIB_HCALOUT towers" << std::endl;
-  //std::cout << "PionAfterModule::process_event: " << towersOH4->size() << " TOWER_CALIB_HCALOUT_SUB1 towers" << std::endl;
-
   _b_particle_n = 0;
-  
+  std::cout<<"Processing Event in Pion After \n";
   PHG4TruthInfoContainer* truthinfo = findNode::getClass<PHG4TruthInfoContainer>(topNode,"G4TruthInfo");
   PHG4TruthInfoContainer::Range range = truthinfo->GetPrimaryParticleRange();
-
+  PHHepMCGenEventMap *pHepMap = findNode::getClass<PHHepMCGenEventMap>(topNode,"HepEventsMap");
+  PHHepMCGenEvent *pHepEvent;
   GlobalVertexMap* vertexmap = findNode::getClass<GlobalVertexMap>(topNode, "GlobalVertexMap");
   float vx=0,vy=0,vz=0;
   if (vertexmap&&!vertexmap->empty())
@@ -107,6 +94,13 @@ int PionAfterModule::process_event(PHCompositeNode *topNode)
     if (fabs(truth_eta) > 1.1) continue;
     float truth_phi = t.Phi();
     int truth_pid = g4particle->get_pid();
+  
+    std::cout<<"Track:"<<g4particle->get_track_id()<<'\n';
+    std::cout<<"EmbedID:"<<truthinfo->isEmbeded(g4particle->get_track_id())<<'\n';
+    pHepEvent = pHepMap->get(truthinfo->isEmbeded(g4particle->get_track_id()));
+    HepMC::GenEvent* hEvent = pHepEvent->getEvent();
+    HepMC::GenParticle* gParticle = hEvent->barcode_to_particle(g4particle->get_barcode());
+    std::cout<<gParticle<<'\n';
 
     _b_particle_pt[ _b_particle_n ] = truth_pt;
     _b_particle_eta[ _b_particle_n ] = truth_eta;
